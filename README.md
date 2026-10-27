@@ -22,7 +22,7 @@ Define the function schema, send the user's query to the Chat Completion API, al
 Name: Santhose Arockiaraj J
 Reg no: 212224230248
 ```
-Import libraries and initialize the API
+#### Import libraries and initialize the API
 ```python
 import os
 import openai
@@ -32,7 +32,7 @@ from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv()) # read local .env file
 openai.api_key = os.environ['OPENAI_API_KEY']
 ```
-Define the circle-area function
+#### Define the circle-area function
 ```python
 import json
 
@@ -46,7 +46,7 @@ def get_area_of_circle(radius, unit="square metre"):
     return json.dumps(area_info)
     
 ```
-Define the function schema
+#### Define the function schema
 ```python
 # define a function
 functions=[
@@ -67,7 +67,7 @@ functions=[
 ]
 
 ```
-Define the user message
+#### Define the user message
 
 ```python
 messages= [
@@ -77,7 +77,7 @@ messages= [
     }
 ]
 ```
-Call the OpenAI API
+#### Call the OpenAI API
 ```python
 # Call the ChatCompletion endpoint
 response = openai.ChatCompletion.create(
@@ -87,55 +87,59 @@ response = openai.ChatCompletion.create(
    
 )
 ```
-Display the response
+#### Display the response
 ```python
 print("Name: Santhose Arockiaraj J\nReg no: 212224230248")
 print(response)
 ```
-Extract the assistant message
+#### Extract the assistant message
 ```python
 response_message = response["choices"][0]["message"]
 ```
-Display the assistant message
+#### Display the assistant message
 ```python
 print("Name: Santhose Arockiaraj J\nReg no: 212224230248")
 response_message
 ```
-Check the assistant's text content
+#### Check the assistant's text content
 ```python
 response_message["content"]
 ```
-Display the function call
+#### Display the function call
 ```python
 response_message["function_call"]
 ```
-Convert the arguments from JSON
+#### Convert the arguments from JSON
 ```python
 json.loads(response_message["function_call"]["arguments"])
 ```
-Store the parsed arguments
+#### Store the parsed arguments
 ```python
 args = json.loads(response_message["function_call"]["arguments"])
 ```
-Execute the function
+#### Execute the function
 ```python
 print("Name: Santhose Arockiaraj J\nReg no: 212224230248")
 get_area_of_circle(**args)
 ```
 
 ### OUTPUT:
-OpenAI API Response
+#### OpenAI API Response
+
 ![alt text](OpenAI_API_Response.png)
 
-Assistant Message with Function Call
+#### Assistant Message with Function Call
+
 ![alt text](Assistant_Message_with_Function_Call.png)
 
-Extracted Function Call Details
+#### Extracted Function Call Details
+
 ![alt text](Extracted_FunctionCall_Details.png)
 
-Function Response (JSON Output)
+#### Function Response (JSON Output)
 
 ![alt text](FunctionResponse.png)
+
 ### RESULT:
 
 The get area of circle function was successfully integrated with the Chat Completion System using the Function Calling feature of an LLM. The model correctly identified the required function, passed the appropriate parameter, executed the Python function, and returned the exchange rate as a structured JSON response.
