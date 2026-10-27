@@ -12,7 +12,7 @@ Develop a Python application that uses the Function Calling capability of an LLM
 Import the required Python libraries (openai, json, os, and dotenv) and configure the OpenAI API key.
 
 #### STEP 2:
-Create a Python function get_exchange_rate(currency) that stores sample exchange rates in a dictionary and returns the corresponding exchange rate in JSON format.
+Create a Python function get_area_of_circle(radius) that stores sample exchange rates in a dictionary and returns the corresponding exchange rate in JSON format.
 
 #### STEP 3:
 Define the function schema, send the user's query to the Chat Completion API, allow the LLM to invoke the appropriate function, parse the function arguments, execute the Python function, and display the JSON response.
